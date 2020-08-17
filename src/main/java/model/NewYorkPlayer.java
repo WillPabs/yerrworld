@@ -14,13 +14,17 @@ public class NewYorkPlayer implements Player {
     private int specialAttackMin = 40;
     private int specialAttackMax = 100;
 
-    public NewYorkPlayer(String name, int healthPoints, WeaponImpl weapon, double cash, int strength, int agility) {
+    public NewYorkPlayer(String name, WeaponImpl weapon, double cash, int strength, int agility) {
         this.name = name;
-        this.healthPoints = healthPoints;
+        this.healthPoints = 100;
         this.weapon = weapon;
         this.cash = cash;
         this.strength = strength;
         this.agility = agility;
+    }
+
+    public NewYorkPlayer() {
+
     }
 
     @Override

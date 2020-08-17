@@ -8,18 +8,21 @@ import java.util.Scanner;
 @SpringBootApplication
 public class YerrworldApplication {
 
-    static Scanner kb = new Scanner(System.in);
-    static WeaponImpl blicky = new WeaponImpl("blicky", 50);
-    static BronxPlayer player = new BronxPlayer("Tyrese", 100, blicky, 1000.0, 10, 20);
-    static MonsterImpl monster = new MonsterImpl("NoBrimGuy", 100, 10, 15);
+    private static Scanner kb = new Scanner(System.in);
+    private static WeaponImpl blicky = new WeaponImpl("blicky", 50);
+    private static NewYorkPlayer player = new BronxPlayer("Tyrese", blicky, 1000.0, 10, 20);
+    private static MonsterImpl monster = new MonsterImpl("NoBrimGuy", 100, 10, 15);
 
     public static void main(String[] args) {
 
         boolean playerAlive = true;
         boolean monsterAlive = true;
 
+        player = choosePlayer();
+
         System.out.println("Enter your Hero's name :");
-        player.setName(kb.nextLine());
+        String name = kb.nextLine();
+        player.setName(name);
 
         System.out.println("Welcome " + player.getName() + "\nGet Ready for battle!");
 
@@ -39,6 +42,44 @@ public class YerrworldApplication {
         }
         System.out.println("Game Over");
 
+    }
+
+    public static NewYorkPlayer choosePlayer() {
+        System.out.println("Choose a number between 1-5 for desired player type: ");
+        System.out.println("1. Bronx Player\n2. Queens Player\n3. Brooklyn Player\n4. Manhattan Player\n5. Staten Island Player");
+        int choice = kb.nextInt();
+
+        if(choice > 5 || choice < 1) {
+            choosePlayer();
+        }
+
+        switch (choice) {
+            case 1:
+                System.out.println("You chose Bronx Player");
+                player = new BronxPlayer();
+                break;
+            case 2:
+                System.out.println("You chose Queens Player");
+                player = new QueensPlayer();
+                break;
+            case 3:
+                System.out.println("You chose Brooklyn Player");
+                player = new BrooklynPlayer();
+                break;
+            case 4:
+                System.out.println("You chose Manhattan Player");
+                player = new ManhattanPlayer();
+                break;
+            case 5:
+                System.out.println("You chose Staten Island Player");
+                player = new StatenIslandPlayer();
+                break;
+            default:
+                System.out.println(choice + " is an invalid selection");
+                break;
+        }
+
+        return player;
     }
 
     public static int playerMove(NewYorkPlayer player, MonsterImpl monster) {

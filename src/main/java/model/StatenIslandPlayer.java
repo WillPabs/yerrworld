@@ -2,7 +2,9 @@ package model;
 
 public class StatenIslandPlayer extends NewYorkPlayer {
 
-    public StatenIslandPlayer(String name, int healthPoints, WeaponImpl weapon, double cash, int strength, int agility) {
-        super(name, healthPoints, weapon, cash, strength, agility);
+    public StatenIslandPlayer(String name, WeaponImpl weapon, double cash, int strength, int agility) {
+        super(name, weapon, cash, strength, agility);
     }
+
+    public StatenIslandPlayer(){}
 }

@@ -2,8 +2,11 @@ package model;
 
 public class BronxPlayer extends NewYorkPlayer{
 
-    public BronxPlayer(String name, int healthPoints, WeaponImpl weapon, double cash, int strength, int agility) {
-        super(name, healthPoints, weapon, cash, strength, agility);
+    public BronxPlayer(String name, WeaponImpl weapon, double cash, int strength, int agility) {
+        super(name, weapon, cash, strength, agility);
+    }
+
+    public BronxPlayer() {
     }
 
     @Override
